@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Axis Bank – Retail & Business Products</title>
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:Arial,Helvetica,sans-serif;color:#222;background:#f7f7f7}
+header{background:#fff;border-bottom:1px solid #ddd;position:sticky;top:0;z-index:5}
+.nav{max-width:1150px;margin:auto;padding:16px 22px;display:flex;align-items:center;justify-content:space-between}
+.logo{font-size:28px;font-weight:800;color:#a50034}.demo{font-size:12px;background:#fff0f4;color:#a50034;padding:7px 10px;border-radius:15px}
+.hero{background:linear-gradient(135deg,#a50034,#d41455);color:#fff;padding:70px 22px}
+.hero-inner{max-width:1150px;margin:auto}.hero h1{font-size:42px;margin:0 0 12px}.hero p{font-size:18px;max-width:650px;line-height:1.6}
+.btn{display:inline-block;padding:12px 20px;border-radius:6px;text-decoration:none;font-weight:700;margin-top:10px}
+.primary{background:#fff;color:#a50034}.dark{background:#a50034;color:#fff}
+.container{max-width:1150px;margin:auto;padding:45px 22px}
+h2{text-align:center;font-size:30px;margin-bottom:10px}.sub{text-align:center;color:#666;margin-bottom:30px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:22px}
+.card{background:#fff;border-radius:12px;padding:26px;box-shadow:0 3px 14px rgba(0,0,0,.08);border-top:4px solid #a50034}
+.card h3{margin-top:0;font-size:22px}.card p{color:#555;line-height:1.55}.card ul{padding-left:20px;line-height:1.8}
+.badge{display:inline-block;background:#f3f3f3;padding:5px 9px;border-radius:12px;font-size:12px;margin-bottom:10px}
+.calculator{background:#fff;padding:28px;border-radius:12px;box-shadow:0 3px 14px rgba(0,0,0,.08);max-width:650px;margin:30px auto}
+input,select{width:100%;padding:12px;margin:7px 0 15px;border:1px solid #ccc;border-radius:6px}
+.result{font-size:20px;font-weight:700;color:#a50034;margin-top:15px}
+footer{background:#222;color:#ddd;text-align:center;padding:25px;font-size:13px}
+@media(max-width:600px){.hero h1{font-size:32px}}
+</style>
+</head>
+<body>
+<header><div class="nav"><div class="logo">AXIS BANK</div><div class="demo">TRAINING / DEMO WEBSITE</div></div></header>
+
+<section class="hero">
+<div class="hero-inner">
+<h1>Banking solutions for your goals</h1>
+<p>Explore Loan Against Property, Super Bike Loan and Current Account – Select in one simple dashboard.</p>
+<a href="#products" class="btn primary">Explore Products</a>
+</div>
+</section>
+
+<section class="container" id="products">
+<h2>Featured Products</h2>
+<p class="sub">Product information is based on Axis Bank's publicly available product pages. Terms and rates may change.</p>
+<div class="grid">
+<div class="card">
+<span class="badge">LOAN</span>
+<h3>Loan Against Property</h3>
+<p>Unlock the value of eligible residential or commercial property for personal or professional funding needs.</p>
+<ul>
+<li>Loan starting from ₹5 lakh</li>
+<li>Maximum repayment period up to 20 years</li>
+<li>Balance transfer and additional refinance options</li>
+<li>Property offered as security</li>
+</ul>
+<a class="btn dark" href="https://www.axis.bank.in/loans/loan-against-property" target="_blank">Learn More</a>
+</div>
+
+<div class="card">
+<span class="badge">TWO-WHEELER LOAN</span>
+<h3>Super Bike Loan</h3>
+<p>Finance premium motorcycles, with the Super Bike Loan applicable to bikes above 500cc.</p>
+<ul>
+<li>Loan starts from ₹1 lakh</li>
+<li>Tenure up to 60 months</li>
+<li>Up to 100% funding on select cases</li>
+<li>Minimal documentation</li>
+</ul>
+<a class="btn dark" href="https://www.axis.bank.in/loans/two-wheeler-loans/super-bike-loan" target="_blank">Learn More</a>
+</div>
+
+<div class="card">
+<span class="badge">BUSINESS BANKING</span>
+<h3>Current Account – Select</h3>
+<p>A current-account option designed for businesses that need convenient transaction and cash-management services.</p>
+<ul>
+<li>Designed for business transactions</li>
+<li>Multiple current-account variants available</li>
+<li>Digital banking and payment solutions</li>
+<li>Eligibility and charges depend on the applicable variant</li>
+</ul>
+<a class="btn dark" href="https://www.axis.bank.in/business-banking/current-account" target="_blank">Explore Current Accounts</a>
+</div>
+</div>
+</section>
+
+<section class="container">
+<h2>Quick EMI Calculator</h2>
+<p class="sub">For learning purposes only – not an official Axis Bank eligibility calculator.</p>
+<div class="calculator">
+<label>Loan Amount (₹)</label>
+<input id="amount" type="number" value="1000000">
+<label>Annual Interest Rate (%)</label>
+<input id="rate" type="number" value="11" step="0.01">
+<label>Tenure (months)</label>
+<input id="tenure" type="number" value="60">
+<button class="btn dark" onclick="calc()">Calculate EMI</button>
+<div class="result" id="result">Monthly EMI: ₹21,742 (approx.)</div>
+</div>
+</section>
+
+<footer>
+© 2026 Demo Website | This is an independent training/demo page and is not the official Axis Bank website.
+</footer>
+
+<script>
+function calc(){
+ const P=Number(document.getElementById('amount').value);
+ const annual=Number(document.getElementById('rate').value);
+ const n=Number(document.getElementById('tenure').value);
+ const r=annual/12/100;
+ const emi=r===0?P/n:P*r*Math.pow(1+r,n)/(Math.pow(1+r,n)-1);
+ document.getElementById('result').innerText='Monthly EMI: ₹'+Math.round(emi).toLocaleString('en-IN')+' (approx.)';
+}
+</script>
+</body>
+</html>
